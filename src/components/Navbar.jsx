@@ -1,11 +1,23 @@
-import React, { Component } from 'react'
+import React from 'react'
+import { NavbarS } from '../styled/NavbarStyled'
 
-export default class Navbar extends Component {
-    render() {
+export  const Navbar = () =>{
         return (
-            <div>
-                <h1> Navbar </h1>
-            </div>
+            
+                <NavbarS> 
+                {/* <form onSubmit={handleSubmit} >
+                <input 
+                type ="text"
+                name ="searchTerm"
+                className = "form-control"
+                placeholder="Search"
+                onChange={(e) =>this.setState({searchTerm: e.target.value})}
+                value={this.state.searchTerm}
+                />
+            </form>  */}
+            </NavbarS>
+                
+            
         )
-    }
+
 }

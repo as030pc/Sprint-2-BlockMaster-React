@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ListContainer from './containers/ListContainer';
-
+// import ListContainer from './containers/ListContainer';
+import AppRouter from './router/AppRouter';
+import './styled/main.css'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ListContainer/>
-  </React.StrictMode>,
+  <AppRouter/>,
   document.getElementById('root')
 );
 
