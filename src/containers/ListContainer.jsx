@@ -7,7 +7,7 @@ import Login from '../components/Login'
 import 'bootswatch/dist/solar/bootstrap.min.css'
 // import 'bootstrap/dist/css/bootstrap.min.css'
 // import 'bootstrap/dist/js/bootstrap.bundle.min.js'
-
+import { Link } from 'react-router-dom'
 const Principal = styled.div `
     background-color:black;
     width:100%;
@@ -49,6 +49,7 @@ export default class ListContainer extends Component {
             <div>
                 
                 <Principal>
+                
                 <Navbar className="container row row-cols-1 row-cols-md-4 g-4 py-5 text-center ms-5"/>
                 {
                     this.state.peli.map((movie,index)=> {
@@ -61,7 +62,8 @@ export default class ListContainer extends Component {
                 }
                 
                 </Principal>
-                <Login/>
+                <Link to = "/login"> Registro de Usuarios </Link>
+                {/* <Login/> */}
                 {/* <Registro/> */}
         
             </div>
