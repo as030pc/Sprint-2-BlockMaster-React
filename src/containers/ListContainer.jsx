@@ -8,6 +8,7 @@ import 'bootswatch/dist/solar/bootstrap.min.css'
 // import 'bootstrap/dist/css/bootstrap.min.css'
 // import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import { Link } from 'react-router-dom'
+const url = 'https://www.omdbapi.com/?i=tt3896198&apikey=3c86e97'
 const Principal = styled.div `
     background-color:black;
     width:100%;
@@ -23,35 +24,45 @@ export default class ListContainer extends Component {
     constructor() {
         super()
         this.state = {
-            peli:[],
-            searchTerm:'Batman',
+            peli: [],
+            searchTerm: 'Batman',
             error: ''
-
         }
     }
     
     async componentDidMount() {
-        const url =' http://www.omdbapi.com/?i=tt3896198&apikey=ea1ed1d&s=batman'
-        const res = await fetch(`${url}&s${this.state.searchTerm}`)
-        const {Search} = await res.json()
-        console.log(Search)
-        this.setState({peli:Search})
+        const res = await fetch(`${url}&s=${this.state.searchTerm}`)
+        const { Search } = await res.json()
+        this.setState({ peli: Search })
+        console.log(this.state.peli)
     }
+
     render() {
-        // const handleSubmit = async(e) => {
-        //     e.preventDefault()
-        //     const res = await fetch(`${url}&s=${this.state.searchTerm}`)
-        //     const { Search } = await res.json()
-        //     this.setState({ peli: Search })
-        // }
+        const handleSubmit = async(e) => {
+            e.preventDefault()
+            const res = await fetch(`${url}&s=${this.state.searchTerm}`)
+            const { Search } = await res.json()
+            this.setState({ peli: Search })
+        }
         return (
 
             <div>
+               
+                <form onSubmit = {handleSubmit}>
+                <input 
+                type ="text"
+                name ="searchTerm" //Se llama de la misma manera del estado
+                className = "form-control"
+                placeholder="Search"
+                autoFocus
+                onChange={(e) =>this.setState({searchTerm: e.target.value})}
+                value={this.state.searchTerm}
+                />
+                </form> 
                 
+                <Link to = "/login"> Registro de Usuarios </Link>
                 <Principal>
-                
-                <Navbar className="container row row-cols-1 row-cols-md-4 g-4 py-5 text-center ms-5"/>
-                {
+                <div className="container row row-cols-1 row-cols-md-4 g-4 py-5 text-center ms-5">{
                     this.state.peli.map((movie,index)=> {
                         return (
                             <Cards key ={index} movies = {movie}/>
@@ -60,9 +71,11 @@ export default class ListContainer extends Component {
                         )
                     })
                 }
+                </div>
+                
                 
                 </Principal>
-                <Link to = "/login"> Registro de Usuarios </Link>
+                
                 {/* <Login/> */}
                 {/* <Registro/> */}
         

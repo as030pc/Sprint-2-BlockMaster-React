@@ -5,7 +5,7 @@ export default class Cards extends Component {
     render() {
         const {Title, Poster, Year} = this.props.movies
         return (
-            <div   >
+            <div className="container ms-1 text-center"   >
                 <div className="col">
                     <div className="card text-white bg-dark mb-3">
                         <img src={Poster} className="" alt="..." width="245px" height="300px" />
