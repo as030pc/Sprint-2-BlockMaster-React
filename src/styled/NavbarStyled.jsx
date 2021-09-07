@@ -7,6 +7,11 @@ padding:10px;
 margin:0px;
 color:white;
 font-size:30px;
+display:flex;
+justify-content: space-between;
+margin:10px;
+
+
 
 
 `;

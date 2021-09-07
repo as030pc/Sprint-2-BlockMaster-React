@@ -1,81 +1,84 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link,Redirect } from 'react-router-dom'
 
 export default class Registro extends Component {
+    constructor() {
+        super();
+        this.state = {
+            form:{
+                
+                username:"",
+                password:"",
+                apellido_paterno:"",
+                apellido_materno:"",
+                nombre:""
+            }
+        }
+        this.handleChange = this.handleChange.bind(this)
+
+    }
     render() {
         return (
-            <div className="Registro py-5 container text-center">
-                <form className="form-signin" onSubmit={this.handleSutmit}>
+            <div className="registro">
+                <form className="formRegistro" onSubmit={this.handleSutmit}>
                     <h1 className="h3 mb-3 font-weight-normal">
                         ¡Registrate en nuestro sistema!
                     </h1>
-                    <div className="fadeIn first ">
+                    <div className="tituloRegistro">
                         <img 
-                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS689Xb1GJwNGzZl9KR7CTRKAZFaXt1060H32xPbb8hw_NXNpJ409Sl-aLnPsJQUfKJnYEV_KndttR1bbUKS_f7DGE3OP59H1Y&usqp=CAU&ec=45725305" 
+                        src="https://res.cloudinary.com/dobboq5dt/image/upload/v1630962747/ImagesDB/logo-blockBuster_xjdjvj.png" 
                         id="icon" 
-                        alt="User Icon" 
+                        alt="logo" 
                         width="100px"/>
                         <h3>Crea una cuenta</h3>
                     </div>
 
                     <input
                         type="text"
-                        placeholder="Apellido paterno"
+                        placeholder="Apellidos"
                         name="apellido_paterno"
-                        className="form-control"
+                        className="inputApellido"
                         autoComplete="off"
-
-                    />
-
-                    <input
-                        type="text"
-                        placeholder="Apellido materno"
-                        name="apellido_materno"
-                        className="form-control"
-                        autoComplete="off"
-
-                        required=""
-
-                    />
+                    /> <br />
 
                     <input
                         type="text"
                         name="nombre"
-                        className="form-control"
-                        placeholder="nombre"
+                        className="inputNombre"
+                        placeholder=" Ingrese su nombre"
                         required=""
 
-                    />
+                    /> <br />
 
                     <input
                         type="email"
                         name="email"
-                        className="form-control"
-                        placeholder="Email"
+                        className="inputCorreo"
+                        placeholder="Ingrese un email valido"
                         required=""
 
-                    />
+                    /> <br />
 
                     <input
                         type="Password"
                         name="password"
-                        className="form-control"
-                        placeholder="Password"
+                        className="inputContrasena"
+                        placeholder="Ingrese una contraseña"
                         required=""
 
                     />
                     <br />
                     <button
                         type="submit"
-                        className="btn btn-primary btn-block mb-1"
+                        className="btnRegistro"
                     >
-                        Register
+                        Registro
                     </button>
                     <br />
-                    <Link to ="/"
+                    <Link to ="/login"
                         className="link"
                     >
-                        Already registered?
+                        Aun no se encuentra registrado?
                     </Link>
                 </form>
             </div>

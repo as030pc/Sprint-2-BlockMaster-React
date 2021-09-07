@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import axios from 'axios';
 import md5 from 'md5';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
-const url = "https://apisprint2.herokuapp.com/usuario"
+const url = "https://api-sprint2-aspalma.herokuapp.com/usuario"
 
 
 export default class Login extends Component {
@@ -13,7 +13,8 @@ export default class Login extends Component {
             form:{
                 username:"",
                 password:""
-            }
+            },
+            redirection:false
         }
         this.handleChange = this.handleChange.bind(this)
 
@@ -35,13 +36,20 @@ export default class Login extends Component {
     }
     iniciarSesion = async () => {
         await axios.get(url,{params:{username:this.state.form.username,password:md5(this.state.form.password)}})
-        .then (response => {
+    .then(response => {
+            
             return response.data;
+            
         })
-        .then (response => {
-            if(response.lenght >0) {
+        .then(response => {
+            if(response.length >0) {
                 let respuesta = response[0]
-                alert(`Bienvenido ${respuesta.nombre} ${respuesta.apellido_paterno}`)
+                alert(`Bienvenido ${respuesta.nombre} ${respuesta.apellido}`)
+                this.setState(
+                    {redirection:{
+                    redirection:true
+                    }}
+                )
             } else {
                 alert('El usuario o las contraseña no son correctas')
             }
@@ -56,54 +64,62 @@ export default class Login extends Component {
         
         return (
             <div>
-                <form className="form-signin" onSubmit = {this.handleSubmit}>
-                    <h1 className="h4 mb-3 font-weight-normal">
+                <form className="formLogin" onSubmit = {this.handleSubmit}>
+                    <h1>
                         Inicio de sesión
                     </h1>
 
                     <input
                         type="email"
                         id="inputEmail"
-                        className="form-control mt-1"
+                        className="inputEmail"
                         placeholder="Email"
                         required=""
                         name = "username"
                         onChange = {this.handleChange}
-                    />
+                    /> <br />
 
                     <input
                         type="Password"
                         id="inputPassword"
-                        className="form-control mt-1"
+                        className="inputLogin"
                         placeholder="Contreña"
                         required=""
                         name = "password"
                         onChange = {this.handleChange}
                     />
+                     <br />
 
                     <button
                         type="submit"
-                        className="btn btn-primary btn-block"
+                        className="btnLogin"
                     >
+                        Iniciar sesion
+                        {/* <Link to ="/principal">
                         Login
+                        </Link> */}
+                       
                     </button>
+                    <br />
 
                     <div className="">
                         <p>Login with social networks</p>
 
-                        <div className="google-btn btn-primary">
-                            <div className="google-icon-wrapper">
+                        <div className="google-btn">
+                            <div className="google-icon">
                                 <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="google button" />
                             </div>
-                            <p className="btn-text">
+                            <p className="btnRegistro">
                                 <b>Sign in with google</b>
                             </p>
                         </div>
                     </div>
+                    <br />
                     <Link to ="/registro" className="Link">
                         Create new account
                     </Link>
                 </form>
+                {this.state.redirection && <Redirect to = "/principal"/>}
             </div>
         )
     }
