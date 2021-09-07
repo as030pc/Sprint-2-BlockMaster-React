@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 // import 'bootswatch/dist/solar/bootstrap.min.css'
 
+
 export default class Cards extends Component {
     render() {
         const {Title, Poster, Year} = this.props.movies
         return (
-            <div className="contenedor-cards"   >
-                <div className="col">
+            <div    >
+                
                     <div className="card">
                         <img src={Poster} className="" alt="" width="245px" height="300px" />
                         <div className="card-body">
@@ -26,7 +27,7 @@ export default class Cards extends Component {
                             
                         </div>
                     </div>
-                </div>
+               
             </div>
         )
     }

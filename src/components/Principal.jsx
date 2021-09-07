@@ -1,6 +1,5 @@
 
 
-
 import React, { Component } from 'react'
 import Cards from "./Cards"
 import {Navbar} from './Navbar'
@@ -43,16 +42,19 @@ export default class Principal extends Component {
             onChange={(e) =>this.setState({searchTerm: e.target.value})}
             value={this.state.searchTerm}
             />
-            <button><img src="" alt="" />Busquesda</button>
+            <button className = "btnSearch">🔍</button>
             </form> )
         return (
             <div>
                 <Navbar form = {busqueda}/> 
             {/* http://react-responsive-carousel.js.org/ */}
-            <div className="contenedor-peliculas">{
+            <div className="contenedor-cards">{
                     this.state.peli.map((movie,index)=> {
                         return (
-                            <Cards key ={index} movies = {movie}/>
+                            <div > 
+                                <Cards key ={index} movies = {movie}/>
+                            </div>
+                            
                         )
                     })
                 }

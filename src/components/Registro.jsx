@@ -1,28 +1,65 @@
 import React, { Component } from 'react'
 import { Link,Redirect } from 'react-router-dom'
+import uuid  from 'react-uuid'
+import md5 from 'md5';
+import axios from 'axios';
+const url = 'https://api-sprint2-aspalma.herokuapp.com/usuario'
 
 export default class Registro extends Component {
     constructor() {
         super();
         this.state = {
             form:{
-                
+                id:"",
                 username:"",
                 password:"",
-                apellido_paterno:"",
-                apellido_materno:"",
+                apellido:"",
                 nombre:""
-            }
+            },
+            redireccionar:false
         }
-        this.handleChange = this.handleChange.bind(this)
+
+
+        
 
     }
+
+    handleSubmit = (e) => {
+        e.preventDefault()
+    }
+    handleChange = async e => {
+        await this.setState({
+            form:{
+                ...this.state.form,
+                [e.target.name]:e.target.value
+            }
+        })
+    } //target.name : permite capturar dependiendo del name que tenga el input en el formulario.
+ 
+
+    RegistroUsuario = async () => {
+        await axios.post(url, {
+            id: uuid,
+            apellido: this.state.form.apellido,
+            nombre: this.state.form.nombre,
+            username: this.state.form.username,
+            password: md5(this.state.form.password)
+        })
+        .then(respuesta => {
+            alert('Usuario Registrado')
+            this.setState({redireccionar:true})
+        })
+        .catch(error => {
+            console.log(error)
+        })
+    }
+
     render() {
         return (
             <div className="registro">
-                <form className="formRegistro" onSubmit={this.handleSutmit}>
+                <form className="formRegistro" onSubmit={this.handleSubmit}>
                     <h1 className="h3 mb-3 font-weight-normal">
-                        ¡Registrate en nuestro sistema!
+                        Registrate en Block-Master
                     </h1>
                     <div className="tituloRegistro">
                         <img 
@@ -36,9 +73,10 @@ export default class Registro extends Component {
                     <input
                         type="text"
                         placeholder="Apellidos"
-                        name="apellido_paterno"
+                        name="apellido"
                         className="inputApellido"
                         autoComplete="off"
+                        onChange ={this.handleChange}
                     /> <br />
 
                     <input
@@ -47,6 +85,7 @@ export default class Registro extends Component {
                         className="inputNombre"
                         placeholder=" Ingrese su nombre"
                         required=""
+                        onChange ={this.handleChange}
 
                     /> <br />
 
@@ -56,6 +95,7 @@ export default class Registro extends Component {
                         className="inputCorreo"
                         placeholder="Ingrese un email valido"
                         required=""
+                        onChange ={this.handleChange}
 
                     /> <br />
 
@@ -65,12 +105,14 @@ export default class Registro extends Component {
                         className="inputContrasena"
                         placeholder="Ingrese una contraseña"
                         required=""
+                        onChange ={this.handleChange}
 
                     />
                     <br />
                     <button
                         type="submit"
                         className="btnRegistro"
+                        onClick = {() => this.RegistroUsuario()}
                     >
                         Registro
                     </button>
@@ -78,9 +120,10 @@ export default class Registro extends Component {
                     <Link to ="/login"
                         className="link"
                     >
-                        Aun no se encuentra registrado?
+                        Usuario Registrado
                     </Link>
                 </form>
+                {this.state.redireccionar && <Redirect to = "/login"/>}
             </div>
         )
     }
