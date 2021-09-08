@@ -1,6 +1,7 @@
 
 import { NavbarS } from '../styled/NavbarStyled'
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export const Navbar = (props) => {
                 return (
@@ -10,6 +11,7 @@ export const Navbar = (props) => {
                 <p>Mas valoradas</p>
                 <p>Menos valoradas</p>
                 <div>{props.form}</div>
+                <div><Link to = "/ajustes">Ajustes</Link></div>
                 </NavbarS>
                 )   
 }

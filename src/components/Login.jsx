@@ -3,7 +3,7 @@ import axios from 'axios';
 import md5 from 'md5';
 import { Link, Redirect } from 'react-router-dom';
 
-const url = "https://api-sprint2-aspalma.herokuapp.com/usuario"
+const url = "https://api-sprint2-aspalma.herokuapp.com/usuario/"
 
 
 export default class Login extends Component {

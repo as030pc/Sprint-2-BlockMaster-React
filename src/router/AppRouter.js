@@ -10,6 +10,7 @@ import ListContainer from '../containers/ListContainer'
 import Login from '../components/Login'
 import Detalle from '../components/Detalle'
 import Principal from '../components/Principal'
+import Crud from '../components/Crud'
 
 
 export default class AppRouter extends Component {
@@ -22,7 +23,7 @@ export default class AppRouter extends Component {
                     <Route exact path = "/registro" component ={Registro} />
                     <Route exact path = "/" component ={ListContainer} />
                     <Route exact path = "/principal" component = {Principal} />
-                    
+                    <Route exact path = "/ajustes" component = {Crud}/>
                 </Switch>
             </Router>
     
