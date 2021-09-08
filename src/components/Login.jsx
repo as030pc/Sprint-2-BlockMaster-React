@@ -37,9 +37,7 @@ export default class Login extends Component {
     iniciarSesion = async () => {
         await axios.get(url,{params:{username:this.state.form.username,password:md5(this.state.form.password)}})
     .then(response => {
-            
-            return response.data;
-            
+            return response.data; 
         })
         .then(response => {
             if(response.length >0) {
@@ -65,9 +63,15 @@ export default class Login extends Component {
         return (
             <div>
                 <form className="formLogin" onSubmit = {this.handleSubmit}>
-                    <h1>
-                        Inicio de sesión
-                    </h1>
+                <div className="tituloRegistro">
+                        <img 
+                        src="https://res.cloudinary.com/dobboq5dt/image/upload/v1630962747/ImagesDB/logo-blockBuster_xjdjvj.png" 
+                        id="icon" 
+                        alt="logo" 
+                        width="100px"/>
+                        <h1>!! Bienvenido a Block-master ¡¡</h1>
+                        <h3>Inicio de sesión</h3>
+                    </div>
 
                     <input
                         type="email"
@@ -102,16 +106,11 @@ export default class Login extends Component {
                     </button>
                     <br />
 
-                    <div className="">
-                        <p>Login with social networks</p>
-
+                    <div>
+                        <p>Login with social networks</p> <br />
                         <div className="google-btn">
-                            <div className="google-icon">
                                 <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="google button" />
-                            </div>
-                            <p className="btnRegistro">
-                                <b>Sign in with google</b>
-                            </p>
+                                <p>Sign in with google</p>
                         </div>
                     </div>
                     <br />

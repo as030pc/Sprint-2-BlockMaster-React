@@ -19,7 +19,7 @@ export default class Registro extends Component {
             redireccionar:false
         }
 
-
+    
         
 
     }
@@ -48,18 +48,28 @@ export default class Registro extends Component {
         .then(respuesta => {
             alert('Usuario Registrado')
             this.setState({redireccionar:true})
+            // const registros = []
+
+            // localStorage.setItem('Registro', JSON.stringify(this.state.form))
+            // registros.push(JSON.parse(localStorage.getItem('Registro')))
+            // localStorage.setItem('Registros', JSON.stringify(registros))
+            // console.log(registros)
         })
         .catch(error => {
             console.log(error)
         })
+        await axios.get(url) 
+        .then(response => localStorage.setItem('Registros2', JSON.stringify(response.data)))
     }
+
+ 
 
     render() {
         return (
             <div className="registro">
                 <form className="formRegistro" onSubmit={this.handleSubmit}>
                     <h1 className="h3 mb-3 font-weight-normal">
-                        Registrate en Block-Master
+                        Registrate en Block-Buster
                     </h1>
                     <div className="tituloRegistro">
                         <img 
@@ -70,14 +80,7 @@ export default class Registro extends Component {
                         <h3>Crea una cuenta</h3>
                     </div>
 
-                    <input
-                        type="text"
-                        placeholder="Apellidos"
-                        name="apellido"
-                        className="inputApellido"
-                        autoComplete="off"
-                        onChange ={this.handleChange}
-                    /> <br />
+                    
 
                     <input
                         type="text"
@@ -87,6 +90,14 @@ export default class Registro extends Component {
                         required=""
                         onChange ={this.handleChange}
 
+                    /> <br />
+                    <input
+                        type="text"
+                        placeholder="Ingrese sus apellidos"
+                        name="apellido"
+                        className="inputApellido"
+                        autoComplete="off"
+                        onChange ={this.handleChange}
                     /> <br />
 
                     <input
@@ -123,6 +134,8 @@ export default class Registro extends Component {
                         Usuario Registrado
                     </Link>
                 </form>
+
+                
                 {this.state.redireccionar && <Redirect to = "/login"/>}
             </div>
         )

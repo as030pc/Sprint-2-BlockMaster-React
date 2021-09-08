@@ -51,9 +51,9 @@ export default class Principal extends Component {
             <div className="contenedor-cards">{
                     this.state.peli.map((movie,index)=> {
                         return (
-                            <div > 
+                            
                                 <Cards key ={index} movies = {movie}/>
-                            </div>
+                            
                             
                         )
                     })
