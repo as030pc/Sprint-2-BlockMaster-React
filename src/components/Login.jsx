@@ -107,7 +107,7 @@ export default class Login extends Component {
                     <br />
 
                     <div>
-                        <p>Login with social networks</p> <br />
+    
                         <div className="google-btn">
                                 <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="google button" />
                                 <p>Sign in with google</p>
