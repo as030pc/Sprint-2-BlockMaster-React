@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import md5 from 'md5';
 import { Link, Redirect } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const url = "https://api-sprint2-aspalma.herokuapp.com/usuario/"
 
@@ -34,6 +35,7 @@ export default class Login extends Component {
         e.preventDefault()
         this.iniciarSesion()
     }
+    
     iniciarSesion = async () => {
         await axios.get(url,{params:{username:this.state.form.username,password:md5(this.state.form.password)}})
     .then(response => {
@@ -42,14 +44,21 @@ export default class Login extends Component {
         .then(response => {
             if(response.length >0) {
                 let respuesta = response[0]
-                alert(`Bienvenido ${respuesta.nombre} ${respuesta.apellido}`)
+                
+                localStorage.setItem('user', this.state.form.username )
+                localStorage.setItem('password', md5(this.state.form.password))
+                Swal.fire({text:`Bienvenido ${respuesta.nombre} ${respuesta.apellido}`,
+                icon:'success'
+                })
                 this.setState(
                     {redirection:{
                     redirection:true
                     }}
                 )
             } else {
-                alert('El usuario o las contraseña no son correctas')
+                Swal.fire({text:'Usuario o contraseña incorrecta',
+                icon:'error'
+            })
             }
         })
     }
@@ -61,6 +70,7 @@ export default class Login extends Component {
 
         
         return (
+
             <div>
                 <form className="formLogin" onSubmit = {this.handleSubmit}>
                 <div className="tituloRegistro">
@@ -96,7 +106,7 @@ export default class Login extends Component {
 
                     <button
                         type="submit"
-                        className="btnLogin"
+                        className="btn btn-primary btnLogin"
                     >
                         Iniciar sesion
                         {/* <Link to ="/principal">
@@ -106,13 +116,13 @@ export default class Login extends Component {
                     </button>
                     <br />
 
-                    <div>
+                  
     
                         <div className="google-btn">
                                 <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="google button" />
                                 <p>Sign in with google</p>
                         </div>
-                    </div>
+                   
                     <br />
                     <Link to ="/registro" className="Link">
                         Create new account

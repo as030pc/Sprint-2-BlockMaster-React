@@ -7,6 +7,9 @@ const url = 'https://api-sprint2-aspalma.herokuapp.com/usuario/'
 
 
 const Crud = () => {
+
+    const passwordSave = localStorage.getItem('password')
+    console.log(passwordSave)
     const [modal, setModal] = useState(false)
     const [data, setData] = useState([])
     const [form, setForm] = useState({id:"",

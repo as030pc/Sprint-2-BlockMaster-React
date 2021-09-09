@@ -53,7 +53,9 @@
       margin-right: 30%;
       margin-top:5%;
       text-align: center;
+      align-content: center;
     }
+    
 
     .formLogin input, .formRegistro input {
       margin:10px;
@@ -62,13 +64,13 @@
       
     }
     .google-btn {
-      cursor: pointer;
-      background-color: blue;
-      border-radius: 2px;
-      box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
-      transition: box-shadow .3s ease;
       display:flex;
       justify-content: space-around;
+      width:250px;
+      height:50px;
+      background-color: blue;
+      margin-top:5%;
+      margin-left:25%;
   }
   
   

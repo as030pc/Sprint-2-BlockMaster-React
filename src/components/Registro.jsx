@@ -3,7 +3,9 @@ import { Link,Redirect } from 'react-router-dom'
 import uuid  from 'react-uuid'
 import md5 from 'md5';
 import axios from 'axios';
-const url = 'https://api-sprint2-aspalma.herokuapp.com/usuario'
+import Swal from 'sweetalert2';
+const url = 'https://api-sprint2-aspalma.herokuapp.com/usuario/'
+
 
 export default class Registro extends Component {
     constructor() {
@@ -46,7 +48,12 @@ export default class Registro extends Component {
             password: md5(this.state.form.password)
         })
         .then(respuesta => {
-            alert('Usuario Registrado')
+            Swal.fire({text:'Correcta',
+            icon:'success'
+            })
+
+
+            
             this.setState({redireccionar:true})
             // const registros = []
 
@@ -102,7 +109,7 @@ export default class Registro extends Component {
 
                     <input
                         type="email"
-                        name="email"
+                        name="username"
                         className="inputCorreo"
                         placeholder="Ingrese un email valido"
                         required=""
