@@ -17,11 +17,27 @@
         
     }
 
-    .card {
+    #card {
       border:solid 1px white;
       margin:10px;
       text-align: center;
+      font-size: 15px;
+      width: 200px;
+      height:auto;
+
       
+      
+    }
+
+    #card img {
+      width: 200px;
+      height: 300px;
+      padding:5px;
+    }
+    .btn-detalle {
+      background-color: orangered;
+      color:whitesmoke;
+      font-size: 8px;
     }
 
     .contenedor-cards {
@@ -31,10 +47,7 @@
       
     }
  
-    form input {
-      font-size: 20px;
-    }
-
+   
     .formLogin, .formRegistro {
       margin-left:30%;
       margin-right: 30%;
@@ -66,63 +79,34 @@
       margin: 11px 40px 0 0;
       font-size: 14px;
       letter-spacing: 0.2px;
+      background-color: #FFFFFE;
   }
 
     .btnSearch {
       background-color: yellow;
+      
     }
 
 
 
-    /* .form-signin {
+    .form-signin {
       width: 80%;
       max-width: 330px;
       padding: 10px;
       margin: auto;
       
     }
-    
-    .form-signin .form-control {
-      position: relative;
-      box-sizing: border-box;
-      height: auto;
-      padding: 10px;
-      font-size: 16px;
-    }
-    .form-signin .form-control:focus {
-      z-index: 1;
-    }
-    .form-signin input[type="email"] {
-      margin-bottom: -1px;
-      border-bottom-right-radius: 0;
-      border-bottom-left-radius: 0;
-    }
-    .form-signin input[type="password"] {
-      margin-bottom: 10px;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-    }
-    
 
-  
-  
-  .nothing__main-content {
-    align-items: center;
-    background-color: #5C62C5;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100vh;
-  
+    #sesion-ajustes {
+      margin-left: 10%;
+      margin-top:5%;
+    }
+    
    
+   
+  
+  
+  .btn {
+    margin-left:5px;
   }
   
-  .nothing__main-content p {
-    text-align: center;
-  }
-  
-  .App-logo{
-      width: 100px;
-      height: 100px;
-      } */

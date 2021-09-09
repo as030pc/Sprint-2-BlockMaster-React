@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
-
+import "bootswatch/dist/darkly/bootstrap.min.css";
+import { Link } from 'react-router-dom';
 const url = 'https://api-sprint2-aspalma.herokuapp.com/usuario/'
 
 
@@ -58,18 +59,30 @@ const Crud = () => {
 
     return (
         <div>
+
+        <div id = "sesion-ajustes">
+
+            <Link to = "/principal"> <img src="https://res.cloudinary.com/dobboq5dt/image/upload/v1630962747/ImagesDB/logo-blockBuster_xjdjvj.png" alt="" /></Link>
             <h1> Ajustes</h1>
             <br />
-            <button onClick = {modalInsertar}>Añadir usuario</button>
-            <h3>Datos de usuario</h3>
+            <button className="btn btn-primary" onClick = {modalInsertar}>Añadir usuario</button>
+            <br />
+            <br />
+            <h4>Datos de usuario</h4>
             {data.map((res)=>{
                  return( <div key = {res}>
-                        <p> {res.nombre}</p>
-                        <p>{res.id}</p> 
-                        <p>{res.username}</p>
                         
+                        <p> Nombre del usuario: {res.nombre}</p>
+                        <p> Correo Electronico: {res.username}</p>
+                        <button className="btn btn-danger"> Eliminar </button> 
+                        <button onClick = {modalInsertar} className="btn btn-secondary"
                         
-                        <button> Eliminar </button> 
+                           >
+                            Modificar
+                        </button>
+
+                       
+                        
                         
                  </div>
                     
@@ -78,7 +91,7 @@ const Crud = () => {
            
 
             <Modal isOpen={modal}>
-                    <h1>Crear Estudiante</h1>
+                    <h1>Crear Nuevo Perfil</h1>
                     <ModalHeader style={{display: 'block'}}>
                         <span style={{float: 'right'}}>x</span>
                     </ModalHeader>
@@ -118,7 +131,7 @@ const Crud = () => {
 
 
 
-    
+            </div>
         </div>
     )
 }

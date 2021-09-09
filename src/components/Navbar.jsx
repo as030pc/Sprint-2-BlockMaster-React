@@ -12,6 +12,7 @@ export const Navbar = (props) => {
                 <p>Menos valoradas</p>
                 <div>{props.form}</div>
                 <div><Link to = "/ajustes">Ajustes</Link></div>
+                <div> <Link to = "/login">Cerrar Sesion</Link></div>
                 </NavbarS>
                 )   
 }
