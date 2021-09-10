@@ -11,6 +11,7 @@ const Crud = () => {
     const passwordSave = localStorage.getItem('password')
     console.log(passwordSave)
     const [modal, setModal] = useState(false)
+    const [modalD, setModalD] = useState(false)
     const [data, setData] = useState([])
     const [form, setForm] = useState({id:"",
                                     nombre:"",
@@ -68,8 +69,15 @@ const Crud = () => {
             console.log(error.message);
         })
 
-
-
+    }
+    const peticionDelete = async () => {
+        await axios.delete(url+form.id)
+        .then(response => {
+            // setModalD({modalD:false});
+            peticionGet();
+        }).catch(error => {
+            console.log(error.message);
+        })
     }
     
   
@@ -91,7 +99,7 @@ const Crud = () => {
                         
                         <p> Nombre del usuario: {res.nombre}</p>
                         <p> Correo Electronico: {res.username}</p>
-                        <button className="btn btn-danger"> Eliminar </button> 
+                        <button onClick ={()=>{seleccionUser(res); setModalD({modalD:false})}}className="btn btn-danger"> Eliminar </button> 
                         <button onClick = {()=>seleccionUser(res)} className="btn btn-secondary">
                             Modificar
                         </button>
@@ -141,6 +149,18 @@ const Crud = () => {
                            >
                             Cancelar
                         </button>
+                    </ModalFooter>
+                </Modal>
+                <Modal isOpen={modalD}>
+                    <ModalBody>
+                        Está seguro de eliminar el usuario {form && form.nombre}
+                    </ModalBody>
+                    <ModalFooter>
+                        <button className="btn btn-danger"
+                       onClick={() => {peticionDelete();setModalD({modalD:false})}}>Sí</button>
+                        <button className="btn btn-secundary"
+                       onClick={() => setModalD({modalD:false})}>No
+                           </button>
                     </ModalFooter>
                 </Modal>
 
