@@ -15,7 +15,7 @@ const Crud = () => {
     const [form, setForm] = useState({id:"",
                                     nombre:"",
                                     apellido:"",
-                                    correo:"",
+                                    username:"",
                                     contraseña:""},)
    
     useEffect(()=> {
@@ -29,23 +29,23 @@ const Crud = () => {
     }
     
     
-    // const seleccionUser =(usuario) => {
-    //     setUser({form:{id:usuario.id,
-    //                     nombre:usuario.nombre,
-    //                     apellido:usuario.apellido,
-    //                     correo:usuario.username,
-    //                     contraseña:usuario.password
-    //     }})
-    // } 
+    const seleccionUser =(usuario) => {
+        modalInsertar()
+        setForm({id:usuario.id,
+                nombre:usuario.nombre,
+                        apellido:usuario.apellido,
+                        username:usuario.username
+        })
+    } 
     
 
-    // const handleChange = async(e) => {
-    //     e.persist()
-    //     await setUser({form:{
-    //         ...user.form,
-    //         [e.target.name]:e.target.value
-    //     }})
-    // }
+    const handleChange = async(e) => {
+        e.persist()
+        await setForm({
+            ...form,
+            [e.target.name]:e.target.value
+        })
+    }
 
     const peticionGet = async () =>  {
         await axios.get(url)
@@ -57,6 +57,20 @@ const Crud = () => {
             console.log(error.message);
         })
     } 
+
+    const peticionPut = async ()=>{
+
+        await axios.put(url+form.id, form)
+        .then(response => {
+            modalInsertar();
+            peticionGet();
+        }).catch(error => {
+            console.log(error.message);
+        })
+
+
+
+    }
     
   
 
@@ -78,9 +92,7 @@ const Crud = () => {
                         <p> Nombre del usuario: {res.nombre}</p>
                         <p> Correo Electronico: {res.username}</p>
                         <button className="btn btn-danger"> Eliminar </button> 
-                        <button onClick = {modalInsertar} className="btn btn-secondary"
-                        
-                           >
+                        <button onClick = {()=>seleccionUser(res)} className="btn btn-secondary">
                             Modificar
                         </button>
 
@@ -105,13 +117,13 @@ const Crud = () => {
                             <br/>
     
                             <label htmlFor="nombres">Nombre</label>
-                            <input className="form-control" type="text" name="nombre" id="nombre" />
+                            <input className="form-control" type="text" name="nombre" id="nombre" onChange = {handleChange} value ={form.nombre}/>
                             <br/>
                             <label htmlFor="apellidos">Apellido</label>
-                            <input className="form-control" type="text" name="apellido" id="apellido"  />
+                            <input className="form-control" type="text" name="apellido" id="apellido" onChange = {handleChange} value = {form.apellido} />
                             <br/>
                             <label htmlFor="telefono">Correo</label>
-                            <input className="form-control" type="email" name="correo" id="correo" />
+                            <input className="form-control" type="email" name="username" id="correo" onChange = {handleChange} value = {form.username}/>
                             <br/>
                             
                             <br/>
@@ -121,7 +133,7 @@ const Crud = () => {
                     </ModalBody>
                     <ModalFooter>
 
-                        <button className="btn btn-primary">
+                        <button onClick = {()=>peticionPut()}className="btn btn-primary">
                             Actualizar
                         </button>
                         <button onClick = {modalInsertar} className="btn btn-danger"
