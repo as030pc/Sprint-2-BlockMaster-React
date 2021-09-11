@@ -8,8 +8,8 @@ const url = 'https://api-sprint2-aspalma.herokuapp.com/usuario/'
 
 const Crud = () => {
 
-    const passwordSave = localStorage.getItem('password')
-    console.log(passwordSave)
+    // const passwordSave = localStorage.getItem('password')
+    // console.log(passwordSave)
     const [modal, setModal] = useState(false)
     const [modalD, setModalD] = useState(false)
     const [data, setData] = useState([])
@@ -47,6 +47,8 @@ const Crud = () => {
             [e.target.name]:e.target.value
         })
     }
+
+
 
     const peticionGet = async () =>  {
         await axios.get(url)
@@ -90,7 +92,7 @@ const Crud = () => {
             <Link to = "/principal"> <img src="https://res.cloudinary.com/dobboq5dt/image/upload/v1630962747/ImagesDB/logo-blockBuster_xjdjvj.png" alt="" /></Link>
             <h1> Ajustes</h1>
             <br />
-            <button className="btn btn-primary" onClick = {modalInsertar}>Añadir usuario</button>
+            {/* <button className="btn btn-primary" onClick = {modalInsertar}>Añadir usuario</button> */}
             <br />
             <br />
             <h4>Datos de usuario</h4>
@@ -102,13 +104,8 @@ const Crud = () => {
                         <button onClick ={()=>{seleccionUser(res); setModalD({modalD:false})}}className="btn btn-danger"> Eliminar </button> 
                         <button onClick = {()=>seleccionUser(res)} className="btn btn-secondary">
                             Modificar
-                        </button>
-
-                       
-                        
-                        
+                        </button>  
                  </div>
-                    
                     )
             })}
            
@@ -116,7 +113,7 @@ const Crud = () => {
             <Modal isOpen={modal}>
                     <h1>Crear Nuevo Perfil</h1>
                     <ModalHeader style={{display: 'block'}}>
-                        <span style={{float: 'right'}}>x</span>
+                        <span style={{float: 'right'}}  onClick = {modalInsertar}>x</span>
                     </ModalHeader>
                     <ModalBody>
                         <div className="form-group">

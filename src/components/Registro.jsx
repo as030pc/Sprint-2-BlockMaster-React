@@ -48,7 +48,7 @@ export default class Registro extends Component {
             password: md5(this.state.form.password)
         })
         .then(respuesta => {
-            Swal.fire({text:'Correcta',
+            Swal.fire({text:`Usuario registrado exitosamente`,
             icon:'success'
             })
 
