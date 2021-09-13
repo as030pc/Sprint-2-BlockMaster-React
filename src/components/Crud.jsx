@@ -48,8 +48,6 @@ const Crud = () => {
         })
     }
 
-
-
     const peticionGet = async () =>  {
         await axios.get(url)
         .then(response => {

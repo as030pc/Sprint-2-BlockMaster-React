@@ -18,15 +18,13 @@
     }
 
     #card {
-      border:solid 1px white;
+      position: relative;
+      border:solid  black;
       margin:10px;
       text-align: center;
       font-size: 15px;
       width: 200px;
       height:auto;
-
-      
-      
     }
 
     #card img {
@@ -68,7 +66,6 @@
       justify-content: space-around;
       width:250px;
       height:50px;
-      background-color: blue;
       margin-top:5%;
       margin-left:25%;
   }
@@ -113,7 +110,39 @@
   }
 
 
-.cursor {
+.cursor, #tarjeta {
   cursor: pointer;
+
 }
+
+#imagen-descripcion {
+  width:150px;
+  height:150px;
+}
+
+#title-seccion {
+  font-family: Montserrat;
+font-style: normal;
+font-weight: bold;
+font-size: 48px;
+line-height: 58px;
+margin: 48px 0px;
+}
+
+#putuacion1 {
+  position: absolute;
+  left: 0%;
+  top:10px;
+  border-top: 1px solid #FED941;
+  border-right: 1px solid #FED941;
+  border-bottom: 1px solid #FED941;
+  border-radius: 0.8em;
+  padding: 0.25em;
+  padding-right: 0.8em;
+  padding-left: 1em; 
+  background: #C4C4C4;
+}
+
+
+
   
