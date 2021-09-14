@@ -46,7 +46,7 @@ export default class Principal extends Component {
                 const  peliculas  = await res.json()
                 this.setState({ peli: peliculas })
                 console.log(this.state.peli)
-                this.state.sinResults = false
+                this.setState({sinResults:false})
                 if (this.state.peli.length === 0) {
                     this.setState({sinResults:true})
                     this.setState({title:""})
