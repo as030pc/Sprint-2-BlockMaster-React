@@ -32,7 +32,7 @@ export default class Cards extends Component {
                                <span  id = 'putuacion1' className="cardSubtitle" > ⭐{puntuacion}</span> 
                             
                             </div>
-                            <Modal isOpen = {this.state.modal}>
+                            <Modal  isOpen = {this.state.modal}>
                                 <ModalHeader>
                                 <img  id = "imagen-descripcion" src={imagen} alt="" />
                                 <h4> {title}</h4>
@@ -54,7 +54,7 @@ export default class Cards extends Component {
 
                             </Modal>
                             <Modal isOpen = {this.state.modalVideo}>
-                                <iframe width="560" height="315" src={trailer} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <iframe width="500" height="315" src={trailer} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                
     
                                 <ModalFooter><button onClick ={openVideo} >Cerrar video</button></ModalFooter>

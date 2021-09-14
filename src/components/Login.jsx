@@ -97,7 +97,7 @@ export default class Login extends Component {
                         type="Password"
                         id="inputPassword"
                         className="inputLogin"
-                        placeholder="Contreña"
+                        placeholder="Contraseña"
                         required=""
                         name = "password"
                         onChange = {this.handleChange}
@@ -114,15 +114,6 @@ export default class Login extends Component {
                         </Link> */}
                        
                     </button>
-                    <br />
-
-                  
-    
-                        <div className="google-btn">
-                                <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="google button" />
-                                <p>Sign in with google</p>
-                        </div>
-                   
                     <br />
                     <Link to ="/registro" className="Link">
                         Create new account

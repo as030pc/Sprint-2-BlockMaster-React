@@ -83,9 +83,7 @@
 
     .btnSearch {
       background-color: yellow;
-      
     }
-
 
 
     .form-signin {
@@ -97,14 +95,11 @@
     }
 
     #sesion-ajustes {
+      
       margin-left: 10%;
       margin-top:5%;
     }
     
-   
-   
-  
-  
   .btn {
     margin-left:5px;
   }
@@ -141,6 +136,16 @@ margin: 48px 0px;
   padding-right: 0.8em;
   padding-left: 1em; 
   background: #C4C4C4;
+}
+
+#sin-resultados {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  text-align: center;
+
+
 }
 
 

@@ -28,10 +28,14 @@ const Crud = () => {
         // e.preventDefault()
         setModal(!modal) // el signo de admiracion hace el cambio. ! signo de negacion. Cambia el false inicial a true
     }
+
+    const modalDelete = () => {
+        setModalD(!modalD) 
+    }
     
     
     const seleccionUser =(usuario) => {
-        modalInsertar()
+
         setForm({id:usuario.id,
                 nombre:usuario.nombre,
                         apellido:usuario.apellido,
@@ -99,8 +103,10 @@ const Crud = () => {
                         
                         <p> Nombre del usuario: {res.nombre}</p>
                         <p> Correo Electronico: {res.username}</p>
-                        <button onClick ={()=>{seleccionUser(res); setModalD({modalD:false})}}className="btn btn-danger"> Eliminar </button> 
-                        <button onClick = {()=>seleccionUser(res)} className="btn btn-secondary">
+                        <button onClick ={()=>{seleccionUser(res); modalDelete()}} className="btn btn-danger"> 
+                            Eliminar 
+                        </button> 
+                        <button onClick = {()=>{seleccionUser(res); modalInsertar()}} className="btn btn-secondary">
                             Modificar
                         </button>  
                  </div>
@@ -152,9 +158,9 @@ const Crud = () => {
                     </ModalBody>
                     <ModalFooter>
                         <button className="btn btn-danger"
-                       onClick={() => {peticionDelete();setModalD({modalD:false})}}>Sí</button>
+                       onClick={()=>{peticionDelete(); modalDelete()}}>Sí</button>
                         <button className="btn btn-secundary"
-                       onClick={() => setModalD({modalD:false})}>No
+                       onClick={() => modalDelete()}>No
                            </button>
                     </ModalFooter>
                 </Modal>
