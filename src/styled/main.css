@@ -148,6 +148,43 @@ margin: 48px 0px;
 
 }
 
+#X {
+  display: flex;
+  justify-content: right;
+  cursor:pointer;
+  
+  
+}
+
+#X div {
+  
+  padding: 5px;
+  
+}
+
+#ver-ahora {
+  background: #FED941;
+  border-radius: 4px;
+  color:black;
+  padding: 10px 24px;
+
+}
+
+#modal-modificar {
+  width: 1200px;
+  height: 579px;
+  text-align: justify;
+  
+
+}
+
+
+
+
+
+
+
+
 
 
   

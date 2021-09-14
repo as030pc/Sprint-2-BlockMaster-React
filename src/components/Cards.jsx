@@ -32,11 +32,16 @@ export default class Cards extends Component {
                                <span  id = 'putuacion1' className="cardSubtitle" > ⭐{puntuacion}</span> 
                             
                             </div>
-                            <Modal  isOpen = {this.state.modal}>
+                            <Modal  id ="modal-modificar" isOpen = {this.state.modal}>
+                                 <div id = "X">
+                                <div onClick = {openDetail}> <img src="https://res.cloudinary.com/dobboq5dt/image/upload/v1631591065/Workshop%2031Agosto/Iconos/Vector_2_ptv1fe.png" alt="" /> </div>
+                                </div>
                                 <ModalHeader>
-                                <img  id = "imagen-descripcion" src={imagen} alt="" />
-                                <h4> {title}</h4>
                                 
+                                <h4> {title}</h4>
+                                <img  id = "imagen-descripcion" src={imagen} alt="" />
+                                
+                               
                                 </ModalHeader>
                                
                                 <ModalBody>
@@ -47,17 +52,22 @@ export default class Cards extends Component {
                                 </ModalBody>
                                 
                                 <ModalFooter>
-                                <button onClick = {openDetail}> Cerrar detalle</button>
-                                <button onClick ={openVideo}> Ver ahora </button>
+                                
+                                <div id ="ver-ahora" onClick ={openVideo}> <img src="https://res.cloudinary.com/dobboq5dt/image/upload/v1631591293/Workshop%2031Agosto/Iconos/Vector_3_qkucur.png" alt="" /> VER AHORA </div>
                                 </ModalFooter>
                                 
 
                             </Modal>
                             <Modal isOpen = {this.state.modalVideo}>
+                                <ModalHeader>
+                                <div id = "X">
+                                <div onClick = {openVideo}> <img src="https://res.cloudinary.com/dobboq5dt/image/upload/v1631591065/Workshop%2031Agosto/Iconos/Vector_2_ptv1fe.png" alt="" /> </div>
+                                </div>
+                            </ModalHeader>
                                 <iframe width="500" height="315" src={trailer} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                
     
-                                <ModalFooter><button onClick ={openVideo} >Cerrar video</button></ModalFooter>
+                                
                             </Modal>
                     </div>
           
